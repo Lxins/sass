@@ -1,0 +1,100 @@
+@charset "utf-8";
+/* 中文注释  要写声明 */
+
+$color: red !default; // 默认值
+@mixin h1 {    //定义代码块(混合器)
+    $color: green;
+    float: left;
+    background: $color;
+}
+@mixin h2($color: yellow) {
+    float: left;
+    background: $color;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    $width: 1px;
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;
+    border: 3px solid #999 {
+        bottom: 0px;
+        left-width: $width;
+        right-width: $width;
+    }
+    .head{
+        width: 100%;
+        height: 50%;
+        margin: 0 auto;
+        overflow: hidden;
+        h1, h2, h3 {
+            width: 33.33%;
+            height: 100%;
+             margin: 0 auto{
+                 top: 100px;
+             }
+        }
+    }
+    .list {
+        width: 100%;
+        height: 120px;
+        list-style: none;
+        overflow: hidden;
+        li {
+            width: 100px;
+            height: 100%;
+            background-color: $color;
+            margin: 15px {
+                left: 30px;
+                right: 30px;
+            }
+        }
+    }
+}
+h1 {
+    @include h1;
+}
+h2 {
+    @include h2(complement(#cc3));
+}
+@import "sass-h3";
+ul {@import "sass-li"}
+
+ol {
+    list-style: none;
+    @if 2 > 3 {
+        color: red;
+    } @else {
+        color: blue;
+    }
+}
+@for $i from 1 through 4 {   // through 会遍历到4 to只遍历到3  数字小到大  大到小都可以
+    @if $i > 3{
+        ol li:nth-of-type(#{$i}) {
+            font-weight: bold;
+            background: #000;
+        }
+    } @else {
+        ol li:nth-of-type(#{$i}) {
+            font-weight: bold;
+            background: red;
+        }
+    }
+}
+
+$list: 1 2 3 4 5;
+@each $mm in $list {
+    ol li:nth-of-type(#{$mm}) {
+        font-size: #{$mm}em;
+    }
+}
+$m: 5;
+@while $m > 0 {
+    ol li#{$m} {
+        width: 100px;
+    }
+    $m: $m - 1;   // 每次减
+}

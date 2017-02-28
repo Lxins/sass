@@ -1,0 +1,19 @@
+　gem install sass      安装sass
+
+  sass test.scss     可以在屏幕上显示.scss文件转化的css代码。（假设文件名为test。）
+
+  sass test.scss test.css    如果要将显示结果保存成文件，后面再跟一个.css文件名。
+
+  SASS提供四个编译风格的选项：
+
+	　* nested：嵌套缩进的css代码，它是默认值。
+　　	  * expanded：没有缩进的、扩展的css代码。
+　　	  * compact：简洁格式的css代码。
+　　	  * compressed：压缩后的css代码。
+
+  你也可以让SASS监听某个文件或目录，一旦源文件有变动，就自动生成编译后的版本。
+
+　// watch a file
+　　sass --watch input.scss:output.css
+　　// watch a directory
+　　sass --watch app/sass:public/stylesheets
